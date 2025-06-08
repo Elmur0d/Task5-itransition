@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <link rel="stylesheet" href="style.css">
+        </head>
+<body>
+    <div class="container">
+        <h1>Task 5</h1>
+        <!-- <button id="exportBtn" class="export-btn">Export to CSV</button> -->
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="language">Language/Region</label>
+                <select id="language">
+                    <option value="en-US">English (USA)</option>
+                    <option value="de-DE">German (Germany)</option>
+                    <option value="ja-JP">Japanese (Japan)</option>
+                    <option value="fr-FR">French (France)</option>
+                    <option value="es-ES">Spanish (Spain)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="seed">Seed</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="seed" value="12345">
+                    <button id="randomSeed">Random</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="likes">Average Likes per Book</label>
+                <div class="slider-container">
+                    <input type="range" id="likes" min="0" max="10" step="0.1" value="3.7">
+                    <span class="slider-value" id="likesValue">3.7</span>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="reviews">Average Reviews per Book</label>
+                <input type="number" id="reviews" min="0" max="100" step="0.1" value="4.7">
+            </div>
+        </div>
+        
+        <div class="view-toggle">
+            <button id="tableViewBtn" class="active">Table View</button>
+            <button id="galleryViewBtn" class="">Gallery View</button>
+        </div>
+        
+        <div id="tableView">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>ISBN</th>
+                        <th>Title</th>
+                        <th>Author(s)</th>
+                        <th>Publisher</th>
+                        <th>Likes</th>
+                        <th>Reviews</th>
+                    </tr>
+                </thead>
+                <tbody id="bookTableBody"></tbody>
+            </table>
+            <div id="loading" class="loading">Loading more books...</div>
+        </div>
+        
+        <div id="galleryView" class="gallery-view">
+            <div class="gallery-item">
+                <div class="gallery-cover" style="background: coverColor">
+                        <div class="book-cover-title">${book.title}</div>
+                        <div class="book-cover-author">${book.author}</div>
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">${book.title}</div>
+                    <div class="gallery-author">${book.author}</div>
+                    <div class="gallery-meta">
+                            <span>${book.publisher}</span>
+                            <span>❤️ ${book.likes}</span>
+                    </div>
+                    <div class="gallery-meta">
+                            <span>📝 ${book.reviewCount} reviews</span>
+                            <span>⭐ ${calculateAverageRating(book.reviews)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+        </body>
+</html>
